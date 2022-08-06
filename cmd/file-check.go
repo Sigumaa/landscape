@@ -11,7 +11,6 @@ title: "title"
 date: "date"
 description: "description"
 ---
-
 `
 
 func extensionCheck(filename string) (err error) {
@@ -42,13 +41,10 @@ func fileEdit(filename string) (err error) {
 	str := ""
 	data := []byte(str)
 	cnt, err := f.Read(data)
-	text := ""
-	if err == nil {
-		text = fm + string(data[:cnt])
-	}
-
-	if _, err = f.Write([]byte(text)); err != nil {
+	if err != nil {
 		return err
 	}
-	return nil
+	text := fm + string(data[:cnt])
+
+	return fmt.Errorf(text)
 }
