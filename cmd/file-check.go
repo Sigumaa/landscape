@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -18,5 +19,14 @@ func fileCheck(filename string) (err error) {
 	if err != nil {
 		return err
 	}
+
+	f, err := os.Create(fn)
+	defer func() {
+		err := f.Close()
+		if err != nil {
+			fmt.Println(err)
+		}
+	}()
+
 	return nil
 }
