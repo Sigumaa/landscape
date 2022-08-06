@@ -18,8 +18,9 @@ hello.mdを作成します。 Front Matterは記述されている状態です�
 
 ## 引数
 
-landscape hello.md --type hugo
 landscape hello.md --type gatsby
 
-typeにhugoやgatsbyを指定すると、それに合わせたFront Matterを記述します。
-指定しない場合はhugo用のFront Matterが記述されます。
+typeにgatsby等を指定すると、それに合わせたFront Matterを記述します。
+指定しない場合はgatsby用のFront Matterが記述されます。
+
+現在はgatsbyにしか対応していません。
