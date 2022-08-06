@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"errors"
 	"fmt"
 	"github.com/spf13/cobra"
 )
@@ -9,12 +10,14 @@ var genCmd = &cobra.Command{
 	Use:   "gen",
 	Short: "Generates text.",
 	Long:  ``,
-	RunE: func(cmd *cobra.Command, args []string) (err error) {
-		arg := ""
-		if len(args) != 0 {
-			arg = args[0]
+	Args: func(cmd *cobra.Command, args []string) error {
+		if len(args) != 1 {
+			return errors.New("file name argument required")
 		}
-		return genText(arg)
+		return nil
+	},
+	RunE: func(cmd *cobra.Command, args []string) (err error) {
+		return genText(args[0])
 	},
 }
 
