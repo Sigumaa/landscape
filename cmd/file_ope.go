@@ -31,7 +31,8 @@ func fileOpe(filename string) (err error) {
 }
 
 func extensionCheck(filename string) (err error) {
-	if strings.HasSuffix(filename, ".md") != true {
+	fn := filename
+	if strings.HasSuffix(fn, ".md") != true {
 		return fmt.Errorf("markdown file required")
 	}
 	return nil
