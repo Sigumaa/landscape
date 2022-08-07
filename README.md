@@ -5,7 +5,7 @@ blog等に流用可能なテキストファイルを生成します。
 
 ## 動作
 
-landscape hello.md
+landscape gen hello.md
 
 * hello.mdが存在する場合
 
