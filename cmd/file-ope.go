@@ -19,6 +19,10 @@ func fileOpe(filename string) (err error) {
 	if err != nil {
 		return err
 	}
+	err = fileCheck(fn)
+	if err != nil {
+		return err
+	}
 	err = fileEdit(fn)
 	if err != nil {
 		return err
@@ -29,6 +33,18 @@ func fileOpe(filename string) (err error) {
 func extensionCheck(filename string) (err error) {
 	if strings.HasSuffix(filename, ".md") != true {
 		return fmt.Errorf("markdown file required")
+	}
+	return nil
+}
+
+func fileCheck(filename string) (err error) {
+	fn := filename
+	_, err = os.OpenFile(fn, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0666)
+	if err != nil {
+		if os.IsExist(err) {
+			return nil
+		}
+		return err
 	}
 	return nil
 }
