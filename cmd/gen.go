@@ -27,7 +27,7 @@ func init() {
 
 func genText(arg string) (err error) {
 	fmt.Print(arg)
-	err = fileEdit(arg)
+	err = fileOpe(arg)
 	if err != nil {
 		return err
 	}
