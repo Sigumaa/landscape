@@ -39,7 +39,13 @@ func extensionCheck(filename string) (err error) {
 
 func fileCheck(filename string) (err error) {
 	fn := filename
-	_, err = os.OpenFile(fn, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0666)
+	f, err := os.OpenFile(fn, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0666)
+	defer func() {
+		err := f.Close()
+		if err != nil {
+			fmt.Println(err)
+		}
+	}()
 	if err != nil {
 		if os.IsExist(err) {
 			return nil
